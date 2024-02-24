@@ -1,6 +1,7 @@
 import 'package:aqua_flow_app/configs/constants.dart';
 import 'package:aqua_flow_app/views/components/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -52,6 +53,7 @@ class IntroPage extends StatelessWidget {
 
             //button
             customButton(
+                // onTap: () => Get.toNamed("/login_page"),
                 onTap: () => Navigator.pushNamed(context, '/login_page'),
                 child: const Icon(Icons.arrow_forward))
           ],

@@ -47,6 +47,8 @@ class Shop extends ChangeNotifier {
 // get user cart
   List<Product> get cart => _cart;
 
+  get length => null;
+
 //add item to cart
   void addToCart(Product item) {
     _cart.add(item);
