@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/views/calculator.dart';
-import 'package:flutter_application_2/views/login.dart';
+import 'package:flutter_application_2/utils/routes.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Calculator(),
+  runApp(GetMaterialApp(
+    initialRoute: "/home",
+    getPages: Routes.routes,
     debugShowCheckedModeBanner: false,
   ));
 }

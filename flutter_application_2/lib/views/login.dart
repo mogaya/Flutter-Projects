@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/views/custombutton.dart';
 import 'package:flutter_application_2/views/customfield.dart';
 import 'package:flutter_application_2/views/customtext.dart';
+import 'package:get/get.dart';
 
 import '../configs/constants.dart';
 
@@ -21,7 +22,7 @@ class Login extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(90.0),
+            padding: const EdgeInsets.all(40.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,6 +47,9 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(
+                  height: 25,
+                ),
                 CustomText(label: "Username"),
                 // TextField(),
                 CustomTextField(
@@ -53,7 +57,7 @@ class Login extends StatelessWidget {
                   hintMessage: "Enter email or phone number",
                   icon: Icons.person,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 CustomText(label: "Password"),
@@ -65,19 +69,40 @@ class Login extends StatelessWidget {
                   obscureText: true,
                   isPassword: true,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 customButton(
                   Controller: usernameController,
-                  label: 'Text',
-                )
+                  label: 'Calculator',
+                  action: navigateToCalc,
+                ),
+                // MaterialButton(
+                //   onPressed: () => Get.toNamed("/calculator"),
+                //   child: Text(
+                //     "Calculator",
+                //     style: TextStyle(
+                //       color: appWhiteColor,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                //   height: 50,
+                //   minWidth: 200,
+                //   color: primaryColor,
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(30),
+                //   ),
+                // )
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void navigateToCalc() {
+    Get.toNamed("/calculator");
   }
 
   // TextField CustomTextField() => TextField();

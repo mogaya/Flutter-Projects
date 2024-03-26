@@ -14,63 +14,80 @@ class Calculator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(20, 90, 20, 40),
-        child: Column(
-          children: [
-            CustomTextField(
-              controller: nameController,
-              hintMessage: 'Enter Name',
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            CustomTextField(
-              controller: num1Controller,
-              hintMessage: "Enter Num 1",
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            CustomTextField(
-              controller: num2Controller,
-              hintMessage: "Enter Num 2",
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            // customButton(label: "Sum")
-            ElevatedButton(
-                onPressed: () {
-                  double a = double.parse(num1Controller.text);
-                  double b = double.parse(num2Controller.text);
-                  String name = nameController.text;
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 90, 20, 40),
+      child: Column(
+        children: [
+          CustomTextField(
+            controller: nameController,
+            hintMessage: 'Enter Name',
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          CustomTextField(
+            controller: num1Controller,
+            hintMessage: "Enter Num 1",
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          CustomTextField(
+            controller: num2Controller,
+            hintMessage: "Enter Num 2",
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          // customButton(label: "Sum")
+          ElevatedButton(
+              onPressed: () {
+                double a = double.parse(num1Controller.text);
+                double b = double.parse(num2Controller.text);
+                String name = nameController.text;
 
-                  double s = a + b;
-                  calculatorController.updateSum(s);
-                  calculatorController.updateValues(a, b);
-                  calculatorController.updateName(name);
+                double s = a + b;
+                calculatorController.updateSum(s);
+                calculatorController.updateValues(a, b);
+                calculatorController.updateName(name);
 
-                  num1Controller.text = "";
-                  num2Controller.text = "";
-                  nameController.text = "";
+                num1Controller.text = "";
+                num2Controller.text = "";
+                nameController.text = "";
 
-                  // print("Sum is $sum");
-                },
-                child: Text("Calculate")),
-            SizedBox(
-              height: 30,
+                // print("Sum is $sum");
+              },
+              child: Text("Calculate")),
+          SizedBox(
+            height: 30,
+          ),
+          Obx(
+            () => CustomText(
+              label:
+                  "Hi ${calculatorController.name} says the sum of ${calculatorController.a} and ${calculatorController.a} is: ${calculatorController.sum}",
+              labelColor: primaryColor,
             ),
-            Obx(
-              () => CustomText(
-                label:
-                    "Hi ${calculatorController.name} says the sum of ${calculatorController.a} and ${calculatorController.a} is: ${calculatorController.sum}",
-                labelColor: primaryColor,
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          MaterialButton(
+            onPressed: () => Get.toNamed("/"),
+            child: Text(
+              "Back to Login",
+              style: TextStyle(
+                color: appWhiteColor,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
-        ),
+            height: 50,
+            minWidth: 200,
+            color: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+        ],
       ),
     );
   }
