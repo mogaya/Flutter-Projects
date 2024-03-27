@@ -1,17 +1,37 @@
+import 'dart:convert';
+
 import 'package:aqua_flow_app/configs/constants.dart';
 import 'package:aqua_flow_app/views/components/customText.dart';
 import 'package:aqua_flow_app/views/components/customTextField.dart';
-import 'package:aqua_flow_app/views/components/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class loginPage extends StatelessWidget {
   loginPage({super.key});
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    //Code to Login
+    Future<void> remoteLogin() async {
+      http.Response response;
+      response = await http.get(Uri.parse(
+          "https://stveronicasyokimau.com/aqua_drop/login.php?phone=${phoneController.text.trim()}&password=${passwordController.text.trim()}"));
+      if (response.statusCode == 200) {
+        var serverResponse = json.decode(response.body);
+        int loginStatus = serverResponse['success'];
+        if (loginStatus == 1) {
+          //Navigate to Dashboard
+          Navigator.pushNamed(context, "/shop_page");
+        } else {
+          print("Phone or password invalid");
+        }
+      } else {
+        print("Server Error ${response.statusCode}");
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -40,7 +60,7 @@ class loginPage extends StatelessWidget {
 
                     //SubText
                     Text(
-                      "Please fill in your email and password to login to your account",
+                      "Please fill in your phone and password to login to your account",
                       style: TextStyle(
                           fontSize: 14, fontWeight: FontWeight.normal),
                     ),
@@ -49,22 +69,22 @@ class loginPage extends StatelessWidget {
                       height: 40,
                     ),
 
-                    //email and text field
+                    //phone and text field
                     Container(
                       width: 300,
                       height: 20,
                       alignment: Alignment.topLeft,
                       child: customText(
-                        label: "Email",
+                        label: "Phone",
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),
                     ),
 
                     customTextField(
-                      controller: emailController,
-                      hintMessage: "Enter Email",
-                      icon: Icons.email_outlined,
+                      controller: phoneController,
+                      hintMessage: "Enter Phone",
+                      icon: Icons.phone_outlined,
                     ),
 
                     SizedBox(
@@ -132,8 +152,10 @@ class loginPage extends StatelessWidget {
                         child: MaterialButton(
                           minWidth: 318,
                           height: 60,
-                          onPressed: () =>
-                              Navigator.pushNamed(context, "/shop_page"),
+                          onPressed: () {
+                            remoteLogin();
+                          },
+                          // Navigator.pushNamed(context, "/shop_page"),
                           child: const Text(
                             "LOGIN",
                             style: TextStyle(
@@ -150,7 +172,7 @@ class loginPage extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 120),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.transparent,
+                            color: Color.fromRGBO(220, 24, 24, 0),
                             shape: BoxShape.rectangle,
                           ),
                           child: MaterialButton(

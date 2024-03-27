@@ -17,10 +17,19 @@ class customDrawer extends StatelessWidget {
               //drawer header: logo
               DrawerHeader(
                 child: Center(
-                  child: Icon(
-                    Icons.water_drop,
-                    size: 72,
-                    color: appBlue,
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.water_drop,
+                        size: 72,
+                        color: appBlue,
+                      ),
+                      Text(
+                        "Aqua Drop",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w200, fontSize: 24),
+                      )
+                    ],
                   ),
                 ),
               ),

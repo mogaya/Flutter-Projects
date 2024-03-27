@@ -1,10 +1,8 @@
 import 'package:aqua_flow_app/configs/constants.dart';
 import 'package:aqua_flow_app/models/product.dart';
 import 'package:aqua_flow_app/models/shop.dart';
-import 'package:aqua_flow_app/views/components/customColumn.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:aqua_flow_app/models/shop.dart';
 
 class customProductTile extends StatelessWidget {
   final Product product;

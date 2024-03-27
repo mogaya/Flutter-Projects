@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class signUpPage extends StatelessWidget {
   signUpPage({super.key});
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
@@ -15,7 +15,7 @@ class signUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color.fromARGB(0, 129, 7, 250),
         elevation: 0,
         foregroundColor: appBlue,
         automaticallyImplyLeading: true,
@@ -72,22 +72,22 @@ class signUpPage extends StatelessWidget {
                       height: 25,
                     ),
 
-                    //Email and text field
+                    //phone and text field
                     Container(
                       width: 300,
                       height: 20,
                       alignment: Alignment.topLeft,
                       child: customText(
-                        label: "Email",
+                        label: "Phone",
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),
                     ),
 
                     customTextField(
-                      controller: emailController,
-                      hintMessage: "Enter your email",
-                      icon: Icons.email_outlined,
+                      controller: phoneController,
+                      hintMessage: "Enter your phone",
+                      icon: Icons.phone_outlined,
                     ),
 
                     SizedBox(

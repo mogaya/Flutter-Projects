@@ -20,13 +20,13 @@ class customListTile extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           icon,
-          color: appYellow,
+          color: appBlue,
           size: 24,
         ),
         title: Text(
           text,
           style: TextStyle(
-            color: appBlue,
+            color: appBlack,
             fontWeight: FontWeight.bold,
           ),
         ),
