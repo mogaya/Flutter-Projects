@@ -4,6 +4,7 @@ import 'package:aqua_flow_app/configs/constants.dart';
 import 'package:aqua_flow_app/views/components/customText.dart';
 import 'package:aqua_flow_app/views/components/customTextField.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class loginPage extends StatelessWidget {
@@ -166,6 +167,9 @@ class loginPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 25,
+                      ),
 
                       //Do not have an account sign up button
                       Padding(
@@ -175,11 +179,8 @@ class loginPage extends StatelessWidget {
                             color: Color.fromRGBO(220, 24, 24, 0),
                             shape: BoxShape.rectangle,
                           ),
-                          child: MaterialButton(
-                            minWidth: 318,
-                            height: 60,
-                            onPressed: () =>
-                                Navigator.pushNamed(context, "/signup_page"),
+                          child: GestureDetector(
+                            onTap: () => Get.toNamed("/signup_page"),
                             child: Center(
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,

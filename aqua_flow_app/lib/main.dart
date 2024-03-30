@@ -1,5 +1,7 @@
 import 'package:aqua_flow_app/models/shop.dart';
+import 'package:aqua_flow_app/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
 import 'views/pages/cart_page.dart';
@@ -32,20 +34,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(
       //   scaffoldBackgroundColor:
       //       Colors.blue, // Change this color to your desired background color
       // ),
-      home: IntroPage(),
-      routes: {
-        '/intro_page': (context) => const IntroPage(),
-        '/login_page': (context) => loginPage(),
-        '/signup_page': (context) => signUpPage(),
-        '/shop_page': (context) => const shopPage(),
-        '/cart_page': (context) => const cartPage(),
-      },
+      // home: IntroPage(),
+      // routes: {
+      //   '/intro_page': (context) => const IntroPage(),
+      //   '/login_page': (context) => loginPage(),
+      //   '/signup_page': (context) => signUpPage(),
+      //   '/shop_page': (context) => const shopPage(),
+      //   '/cart_page': (context) => const cartPage(),
+      // },
+      initialRoute: "/",
+      getPages: Routes.routes,
     );
   }
 }

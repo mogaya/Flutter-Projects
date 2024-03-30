@@ -2,14 +2,15 @@ import 'package:aqua_flow_app/configs/constants.dart';
 import 'package:aqua_flow_app/views/components/customText.dart';
 import 'package:aqua_flow_app/views/components/customTextField.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class signUpPage extends StatelessWidget {
   signUpPage({super.key});
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +95,28 @@ class signUpPage extends StatelessWidget {
                       height: 25,
                     ),
 
+                    //Email Text Field
+                    Container(
+                      width: 300,
+                      height: 20,
+                      alignment: Alignment.topLeft,
+                      child: customText(
+                        label: "Email",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+
+                    customTextField(
+                      controller: phoneController,
+                      hintMessage: "Enter your email",
+                      icon: Icons.email_outlined,
+                    ),
+
+                    SizedBox(
+                      height: 25,
+                    ),
+
                     //password and text field
                     Container(
                       width: 300,
@@ -118,23 +141,23 @@ class signUpPage extends StatelessWidget {
                     ),
 
                     //Confirm Password and text field
-                    Container(
-                      width: 300,
-                      height: 20,
-                      alignment: Alignment.topLeft,
-                      child: customText(
-                        label: "Confirm Password",
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    customTextField(
-                      controller: confirmPasswordController,
-                      hintMessage: "Enter password again",
-                      icon: Icons.lock_outline_rounded,
-                      obscureText: true,
-                      isPassword: true,
-                    ),
+                    // Container(
+                    //   width: 300,
+                    //   height: 20,
+                    //   alignment: Alignment.topLeft,
+                    //   child: customText(
+                    //     label: "Confirm Password",
+                    //     fontWeight: FontWeight.bold,
+                    //     fontSize: 14,
+                    //   ),
+                    // ),
+                    // customTextField(
+                    //   controller: confirmPasswordController,
+                    //   hintMessage: "Enter password again",
+                    //   icon: Icons.lock_outline_rounded,
+                    //   obscureText: true,
+                    //   isPassword: true,
+                    // ),
                   ],
                 ),
 
@@ -166,12 +189,12 @@ class signUpPage extends StatelessWidget {
                         ),
                       ),
 
+                      SizedBox(
+                        height: 25,
+                      ),
+
                       //Already have an account Login in button
-                      MaterialButton(
-                        minWidth: 318,
-                        height: 60,
-                        onPressed: () =>
-                            Navigator.pushNamed(context, '/login_page'),
+                      GestureDetector(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -196,6 +219,7 @@ class signUpPage extends StatelessWidget {
                             ),
                           ],
                         ),
+                        onTap: () => Get.toNamed("/login_page"),
                       ),
                     ],
                   ),
@@ -207,4 +231,8 @@ class signUpPage extends StatelessWidget {
       ),
     );
   }
+  // Future<void> serverSignup() async{
+  //   http.Response response;
+  //   response=await http.post(uri)
+  // }
 }
