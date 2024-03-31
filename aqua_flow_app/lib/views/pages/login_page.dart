@@ -38,7 +38,7 @@ class loginPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: appBlue,
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Center(

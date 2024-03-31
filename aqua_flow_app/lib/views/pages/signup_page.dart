@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:aqua_flow_app/configs/constants.dart';
 import 'package:aqua_flow_app/views/components/customText.dart';
 import 'package:aqua_flow_app/views/components/customTextField.dart';
@@ -19,7 +21,7 @@ class signUpPage extends StatelessWidget {
         backgroundColor: Color.fromARGB(0, 129, 7, 250),
         elevation: 0,
         foregroundColor: appBlue,
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -108,7 +110,7 @@ class signUpPage extends StatelessWidget {
                     ),
 
                     customTextField(
-                      controller: phoneController,
+                      controller: emailController,
                       hintMessage: "Enter your email",
                       icon: Icons.email_outlined,
                     ),
@@ -175,7 +177,7 @@ class signUpPage extends StatelessWidget {
                           minWidth: 318,
                           height: 60,
                           onPressed: () {
-                            Navigator.pushNamed(context, '/shop_page');
+                            serverSignup();
                             BoxDecoration(color: Colors.transparent);
                           },
                           child: const Text(
@@ -231,8 +233,26 @@ class signUpPage extends StatelessWidget {
       ),
     );
   }
-  // Future<void> serverSignup() async{
-  //   http.Response response;
-  //   response=await http.post(uri)
-  // }
+
+  Future<void> serverSignup() async {
+    http.Response response;
+    var body = {
+      'username': nameController.text.trim(),
+      'phone': phoneController.text.trim(),
+      'email': emailController.text.trim(),
+      'password': passwordController.text.trim()
+    };
+
+    response = await http.post(
+        Uri.parse("https://stveronicasyokimau.com/aqua_drop/signup.php"),
+        body: body);
+
+    if (response.statusCode == 200) {
+      var serverResponse = json.decode(response.body);
+      int signedUp = serverResponse['success'];
+      if (signedUp == 1) {
+        Get.offAndToNamed("/login_page");
+      }
+    }
+  }
 }
