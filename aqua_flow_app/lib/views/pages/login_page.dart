@@ -24,7 +24,8 @@ class loginPage extends StatelessWidget {
         int loginStatus = serverResponse['success'];
         if (loginStatus == 1) {
           //Navigate to Dashboard
-          Navigator.pushNamed(context, "/shop_page");
+          Get.offAndToNamed("/home_page");
+          // Navigator.pushNamed(context, "/shop_page");
         } else {
           print("Phone or password invalid");
         }

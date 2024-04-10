@@ -50,7 +50,7 @@ class shopPage extends StatelessWidget {
 
           //product list
           SizedBox(
-            height: 650,
+            height: 600,
             child: ListView.builder(
               itemCount: products.length,
               padding: const EdgeInsets.all(15),
