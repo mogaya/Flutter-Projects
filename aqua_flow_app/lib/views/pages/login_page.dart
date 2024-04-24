@@ -1,16 +1,19 @@
 import 'dart:convert';
 
 import 'package:aqua_flow_app/configs/constants.dart';
+import 'package:aqua_flow_app/controllers/login_controller.dart';
 import 'package:aqua_flow_app/views/components/customText.dart';
 import 'package:aqua_flow_app/views/components/customTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+TextEditingController passwordController = TextEditingController();
+TextEditingController phoneController = TextEditingController();
+LoginController loginController = Get.put(LoginController());
+
 class loginPage extends StatelessWidget {
   loginPage({super.key});
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +27,11 @@ class loginPage extends StatelessWidget {
         int loginStatus = serverResponse['success'];
         if (loginStatus == 1) {
           //Navigate to Dashboard
-          Get.offAndToNamed("/home_page");
-          // Navigator.pushNamed(context, "/shop_page");
+          var userData = serverResponse['userdata'];
+          var phone = userData[0]['phone'];
+          print(phone);
+          loginController.updatePhoneNumber(phone);
+          Get.toNamed("/home_page");
         } else {
           print("Phone or password invalid");
         }

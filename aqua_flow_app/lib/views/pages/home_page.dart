@@ -1,6 +1,6 @@
 import 'package:aqua_flow_app/configs/constants.dart';
 import 'package:aqua_flow_app/controllers/home_controller.dart';
-import 'package:aqua_flow_app/views/pages/cart_page.dart';
+import 'package:aqua_flow_app/views/pages/orders_page.dart';
 import 'package:aqua_flow_app/views/pages/profile_page.dart';
 import 'package:aqua_flow_app/views/pages/shop_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -11,8 +11,8 @@ HomeController homeController = Get.put(HomeController());
 
 var screenList = [
   shopPage(),
+  ordersPage(),
   profilePage(),
-  cartPage(),
 ];
 
 class homePage extends StatelessWidget {
@@ -25,6 +25,7 @@ class homePage extends StatelessWidget {
         color: appBlue,
         backgroundColor: appWhite,
         buttonBackgroundColor: appBlue,
+        height: 55,
         items: [
           Icon(
             Icons.home_rounded,
@@ -32,12 +33,12 @@ class homePage extends StatelessWidget {
             color: appWhite,
           ),
           Icon(
-            Icons.person,
+            Icons.history,
             size: 27,
             color: appWhite,
           ),
           Icon(
-            Icons.shopping_cart_rounded,
+            Icons.person,
             size: 25,
             color: appWhite,
           ),
