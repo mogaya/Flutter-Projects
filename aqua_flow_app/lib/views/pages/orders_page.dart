@@ -94,15 +94,30 @@ class ordersPage extends StatelessWidget {
     getOrdes();
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: appBlack,
-        title: Text("Previous Orders"),
-        titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: appBlack,
-          fontSize: 22,
+        title: Text(
+          "Order History",
+          style: TextStyle(fontSize: 30),
         ),
+        titleTextStyle: TextStyle(
+            fontWeight: FontWeight.bold, color: appBlack, fontSize: 22),
+        // actions: [
+        //   //Exit Button
+        //   Padding(
+        //     padding: const EdgeInsets.all(10.0),
+        //     child: GestureDetector(
+        //       onTap: () => Get.offAndToNamed("/shop_page"),
+        //       child: Icon(
+        //         Icons.shopping_bag_outlined,
+        //         size: 32,
+        //         color: appGrey,
+        //       ),
+        //     ),
+        //   )
+        // ],
       ),
       backgroundColor: appWhite,
       body: Column(
